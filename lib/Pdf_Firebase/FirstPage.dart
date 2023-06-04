@@ -23,7 +23,8 @@ class _FirstPageState extends State<FirstPage> {
         onPressed: () {
           getPdfAndUpload();
         },
-        child: Icon(
+        // ignore: sort_child_properties_last
+        child: const Icon(
           Icons.add,
           color: Colors.white,
         ),
