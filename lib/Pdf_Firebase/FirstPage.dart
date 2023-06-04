@@ -8,6 +8,7 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_pdf_viewer/easy_pdf_viewer.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ class FirstPage extends StatefulWidget {
 
 class _FirstPageState extends State<FirstPage> {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
+  List<Map<String, dynamic>> pdfData = [];
   Future<String> uploadPdf(String fileName, File file) async {
     final reference =
         FirebaseStorage.instance.ref().child('pdfs/$fileName.pdf');
@@ -47,6 +49,20 @@ class _FirstPageState extends State<FirstPage> {
     }
   }
 
+  void getAllPdf() async {
+    final results = await _firebaseFirestore.collection("pdfs").get();
+    pdfData = results.docs.map((e) => e.data()).toList();
+    setState(() {});
+  }
+
+  @override
+  //screen ke start hote hi function call hojayega
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getAllPdf();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,13 +82,18 @@ class _FirstPageState extends State<FirstPage> {
         backgroundColor: Colors.red,
       ),
       body: GridView.builder(
+          itemCount: pdfData.length,
           gridDelegate:
               SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.all(10),
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>
+                          PdfViewerScreen(pdfUrl: pdfData[index]['url'])));
+                },
                 child: Container(
                   decoration: BoxDecoration(
                     border: Border.all(),
@@ -85,6 +106,10 @@ class _FirstPageState extends State<FirstPage> {
                         height: 100,
                         width: 80,
                       ),
+                      Text(
+                        pdfData[index]['name'],
+                        style: TextStyle(fontSize: 18),
+                      )
                     ],
                   ),
                 ),
@@ -92,5 +117,41 @@ class _FirstPageState extends State<FirstPage> {
             );
           }),
     );
+  }
+}
+
+class PdfViewerScreen extends StatefulWidget {
+  final String pdfUrl;
+  const PdfViewerScreen({super.key, required this.pdfUrl});
+
+  @override
+  State<PdfViewerScreen> createState() => _PdfViewerScreenState();
+}
+
+class _PdfViewerScreenState extends State<PdfViewerScreen> {
+  PDFDocument? document;
+
+  void initializePdf() async {
+    document = await PDFDocument.fromURL(widget.pdfUrl);
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    initializePdf();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: document != null
+            ? PDFViewer(
+                document: document!,
+              )
+            : Center(
+                child: CircularProgressIndicator(),
+              ));
   }
 }
