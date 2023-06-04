@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "63665678968",
+    "project_id": "pdf-master-199",
+    "storage_bucket": "pdf-master-199.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:63665678968:android:9d63d9818f720fd4c31b8d",
+        "android_client_info": {
+          "package_name": "com.example.pdf_master"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "63665678968-hhpvi18hs2o9h0fc9j667gokka0k0dh3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuDduIEdgxV24AI0mWR2IqH2yGSArTnsI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "63665678968-hhpvi18hs2o9h0fc9j667gokka0k0dh3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
