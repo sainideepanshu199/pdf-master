@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "63665678968",
-    "project_id": "pdf-master-199",
-    "storage_bucket": "pdf-master-199.appspot.com"
+    "project_number": "191556464775",
+    "project_id": "pdf-viewer-334",
+    "storage_bucket": "pdf-viewer-334.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:63665678968:android:9d63d9818f720fd4c31b8d",
+        "mobilesdk_app_id": "1:191556464775:android:a14e29983beae8137f0822",
         "android_client_info": {
           "package_name": "com.example.pdf_master"
         }
       },
       "oauth_client": [
         {
-          "client_id": "63665678968-hhpvi18hs2o9h0fc9j667gokka0k0dh3.apps.googleusercontent.com",
+          "client_id": "191556464775-uigf3udfadkuis4km7ps0j14o8kan6a4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCuDduIEdgxV24AI0mWR2IqH2yGSArTnsI"
+          "current_key": "AIzaSyD3IciFPo1FrhtmoFTYWRdmJhBXR7sdboc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "63665678968-hhpvi18hs2o9h0fc9j667gokka0k0dh3.apps.googleusercontent.com",
+              "client_id": "191556464775-uigf3udfadkuis4km7ps0j14o8kan6a4.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
